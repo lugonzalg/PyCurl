@@ -1,17 +1,15 @@
 #src => https://stackoverflow.com/questions/11914472/how-to-use-stringio-in-python3
-
 import pycurl
 import json
 import io
 
-curl = pycurl.Curl()
-curl.setopt(pycurl.URL, 'http://212.227.148.73:8080/api/internal/login')
-curl.setopt(pycurl.HTTPHEADER, ['Accept: application/json',
-                                'Content-Type: application/json'])
-curl.setopt(pycurl.POST, 1)
-
-# If you want to set a total timeout, say, 3 seconds
-curl.setopt(pycurl.TIMEOUT_MS, 3000)
+def main():
+    curl = pycurl.Curl()
+    curl.setopt(pycurl.URL, 'http://212.227.148.73:8080/api/internal/login')
+    curl.setopt(pycurl.HTTPHEADER, ['Accept: application/json',
+    curl.setopt(pycurl.POST, 1)
+    # If you want to set a total timeout, say, 3 seconds
+    curl.setopt(pycurl.TIMEOUT_MS, 3000)
 
 ## depending on whether you want to print details on stdout, uncomment either
 # curl.setopt(pycurl.VERBOSE, 1) # to print entire request flow
@@ -38,3 +36,6 @@ if status_code != 200:
 
 # don't forget to release connection when finished
 curl.close()
+
+if __name__ == "__main__":
+    main()
